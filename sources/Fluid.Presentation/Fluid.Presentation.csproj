@@ -8,7 +8,7 @@
   <Import Project="../../props/Fluid.Presentation.props" />
 
   <ItemGroup>
-    <PackageReference Include="Fluid.Core.Base" Version="0.3.0" />
+    <PackageReference Include="Fluid.Core.Base" Version="2020.1.1" />
   </ItemGroup>
 
 </Project>
