@@ -4,6 +4,10 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Fluid.Presentation\Fluid.Presentation.csproj" />
+  </ItemGroup>
+
   <Import Project="../../props/Fluid.Presentation.props" />
 
 </Project>
