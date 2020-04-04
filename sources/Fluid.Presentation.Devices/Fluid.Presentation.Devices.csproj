@@ -3,7 +3,7 @@
   <Import Project="../../props/Fluid.Presentation.props" />
 
   <ItemGroup>
-    <PackageReference Include="Fluid.Core.Devices.Interfaces" Version="2020.1.6" />
+    <PackageReference Include="Fluid.Core.Devices.Interfaces" Version="2020.1.16" />
   </ItemGroup>
 
   <ItemGroup>

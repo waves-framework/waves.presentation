@@ -1,14 +1,19 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Fluid.Core.Base;
 using Fluid.Presentation.Interfaces;
 
 namespace Fluid.Presentation.Base
 {
+    /// <summary>
+    /// Abstract presentation controller base class.
+    /// </summary>
     public abstract class PresentationController : ObservableObject, IPresentationController
     {
         private IPresentation _selectedPresentation;
 
-        private ObservableCollection<IPresentation> _presentations =
+        private ICollection<IPresentation> _presentations =
             new ObservableCollection<IPresentation>();
 
         /// <inheritdoc />
@@ -28,7 +33,7 @@ namespace Fluid.Presentation.Base
         }
 
         /// <inheritdoc />
-        public ObservableCollection<IPresentation> Presentations
+        public ICollection<IPresentation> Presentations
         {
             get => _presentations;
             private set

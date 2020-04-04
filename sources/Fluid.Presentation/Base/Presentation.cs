@@ -3,6 +3,9 @@ using Fluid.Presentation.Interfaces;
 
 namespace Fluid.Presentation.Base
 {
+    /// <summary>
+    /// Abstract presentation base class.
+    /// </summary>
     public abstract class Presentation : ObservableObject, IPresentation
     {
         /// <inheritdoc />

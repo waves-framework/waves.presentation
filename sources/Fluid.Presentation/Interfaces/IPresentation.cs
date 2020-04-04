@@ -2,20 +2,23 @@
 
 namespace Fluid.Presentation.Interfaces
 {
+    /// <summary>
+    /// Interface for presentations.
+    /// </summary>
     public interface IPresentation : INotifyPropertyChanged
     {
         /// <summary>
-        /// Контекст данных представления.
+        /// Gets view model context.
         /// </summary>
         IPresentationViewModel DataContext { get; }
 
         /// <summary>
-        /// Представление.
+        /// Gets view.
         /// </summary>
         IPresentationView View { get; }
 
         /// <summary>
-        /// Инициализация.
+        /// Initializes presentation.
         /// </summary>
         void Initialize();
     }

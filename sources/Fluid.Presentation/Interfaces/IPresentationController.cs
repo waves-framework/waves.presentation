@@ -1,22 +1,26 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace Fluid.Presentation.Interfaces
 {
+    /// <summary>
+    /// Interface for presentation controllers.
+    /// </summary>
     public interface IPresentationController : INotifyPropertyChanged
     {
         /// <summary>
-        ///     Выбранное представление.
+        ///     Gets or sets selected presentation.
         /// </summary>
         IPresentation SelectedPresentation { get; set; }
 
         /// <summary>
-        ///     Список доступных представлений.
+        ///     Gets presentations collection.
         /// </summary>
-        ObservableCollection<IPresentation> Presentations { get; }
+        ICollection<IPresentation> Presentations { get; }
 
         /// <summary>
-        /// Инициализация.
+        /// Initializes presentation controller.
         /// </summary>
         void Initialize();
     }
