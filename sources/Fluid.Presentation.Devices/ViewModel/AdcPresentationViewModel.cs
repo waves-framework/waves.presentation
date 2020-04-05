@@ -3,27 +3,30 @@ using Fluid.Presentation.Base;
 
 namespace Fluid.Presentation.Devices.ViewModel
 {
-    public class AdcViewModel : PresentationViewModel
+    /// <summary>
+    /// Analog-digital converter presentation view model.
+    /// </summary>
+    public class AdcPresentationViewModel : PresentationViewModel
     {
         private IAdc _adc;
         private bool _isUsing;
 
         /// <summary>
-        /// Новый экземпляр представления модели модуля АЦП.
+        /// Creates new instance of ADC presentation view model.
         /// </summary>
-        /// <param name="device"></param>
-        public AdcViewModel(IAdc device)
+        /// <param name="device">Device.</param>
+        public AdcPresentationViewModel(IAdc device)
         {
             Adc = device;
         }
 
         /// <summary>
-        /// Используется ли данное АЦП.
+        /// Gets or sets whether ADC is using.
         /// </summary>
         public bool IsUsing
         {
             get => _isUsing;
-            set
+            private set
             {
                 if (value == _isUsing) return;
                 _isUsing = value;
@@ -32,7 +35,7 @@ namespace Fluid.Presentation.Devices.ViewModel
         }
 
         /// <summary>
-        /// АЦП.
+        /// Gets or sets ADC device instance.
         /// </summary>
         public IAdc Adc
         {
