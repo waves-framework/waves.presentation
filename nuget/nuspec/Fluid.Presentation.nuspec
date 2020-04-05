@@ -28,10 +28,11 @@
   </metadata>
   <files>
   	<file src="..\..\files\logo.png" target="files\" />
-    <file src="..\..\bin\AnyCPU\release\netcoreapp3.1\Fluid.Presentation.dll" target="ref\netcoreapp3.1"/>
-    <file src="..\..\bin\AnyCPU\release\netcoreapp3.1\Fluid.Presentation.xml" target="ref\netcoreapp3.1"/>
+    <file src="..\..\bin\AnyCPU\release\netcoreapp3.1\Fluid.Presentation.dll" target="lib\netcoreapp3.1"/>
+    <file src="..\..\bin\AnyCPU\release\netcoreapp3.1\Fluid.Presentation.xml" target="lib\netcoreapp3.1"/>
     <file src="..\..\bin\x86\release\netcoreapp3.1\Fluid.Presentation.dll" target="build\x86"/>
     <file src="..\..\bin\x86\release\netcoreapp3.1\Fluid.Presentation.xml" target="build\x86"/>
     <file src="..\..\bin\x64\release\netcoreapp3.1\Fluid.Presentation.dll" target="build\x64"/>
     <file src="..\..\bin\x64\release\netcoreapp3.1\Fluid.Presentation.xml" target="build\x64"/>
+  </files>    
 </package>
