@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Fluid.Presentation.Devices</id>
-    <version>{$NUGETVERSION}/version>
+    <version>{$NUGETVERSION}</version>
     <authors>Fluid</authors>
     <owners>Fluid</owners>
     <licenseUrl>https://ambertape.ru</licenseUrl>
