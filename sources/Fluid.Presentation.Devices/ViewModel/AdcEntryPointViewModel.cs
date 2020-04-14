@@ -3,13 +3,16 @@ using Fluid.Presentation.Base;
 
 namespace Fluid.Presentation.Devices.ViewModel
 {
+    /// <summary>
+    /// View model for ADC entry point.
+    /// </summary>
     public class AdcEntryPointViewModel : PresentationViewModel
     {
         private IAdcEntryPoint _entryPoint;
         private bool _isUsing;
 
         /// <summary>
-        ///     Новый экземпляр представления модели канала АЦП.
+        ///     Creates new instance of Adc Entry point.
         /// </summary>
         /// <param name="entryPoint"></param>
         public AdcEntryPointViewModel(IAdcEntryPoint entryPoint)
@@ -18,7 +21,7 @@ namespace Fluid.Presentation.Devices.ViewModel
         }
 
         /// <summary>
-        ///     Используется ли данный канал.
+        ///     Gets or sets whether entry point (channel) is using.
         /// </summary>
         public bool IsUsing
         {
@@ -32,7 +35,7 @@ namespace Fluid.Presentation.Devices.ViewModel
         }
 
         /// <summary>
-        ///     Канал.
+        ///     Gets instance of Entry point.
         /// </summary>
         public IAdcEntryPoint EntryPoint
         {
