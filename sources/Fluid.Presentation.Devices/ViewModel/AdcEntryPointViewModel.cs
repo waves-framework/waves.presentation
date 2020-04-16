@@ -4,7 +4,7 @@ using Fluid.Presentation.Base;
 namespace Fluid.Presentation.Devices.ViewModel
 {
     /// <summary>
-    /// View model for ADC entry point.
+    ///     View model for ADC entry point.
     /// </summary>
     public class AdcEntryPointViewModel : PresentationViewModel
     {
