@@ -4,7 +4,7 @@ using Fluid.Presentation.Base;
 namespace Fluid.Presentation.Devices.ViewModel
 {
     /// <summary>
-    /// Analog-digital converter presentation view model.
+    ///     Analog-digital converter presentation view model.
     /// </summary>
     public class AdcPresentationViewModel : PresentationViewModel
     {
@@ -12,7 +12,7 @@ namespace Fluid.Presentation.Devices.ViewModel
         private bool _isUsing;
 
         /// <summary>
-        /// Creates new instance of ADC presentation view model.
+        ///     Creates new instance of ADC presentation view model.
         /// </summary>
         /// <param name="device">Device.</param>
         public AdcPresentationViewModel(IAdc device)
@@ -21,7 +21,7 @@ namespace Fluid.Presentation.Devices.ViewModel
         }
 
         /// <summary>
-        /// Gets or sets whether ADC is using.
+        ///     Gets or sets whether ADC is using.
         /// </summary>
         public bool IsUsing
         {
@@ -35,7 +35,7 @@ namespace Fluid.Presentation.Devices.ViewModel
         }
 
         /// <summary>
-        /// Gets or sets ADC device instance.
+        ///     Gets or sets ADC device instance.
         /// </summary>
         public IAdc Adc
         {

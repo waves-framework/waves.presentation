@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace Fluid.Presentation.Interfaces
 {
     /// <summary>
-    /// Interface for presentation controllers.
+    ///     Interface for presentation controllers.
     /// </summary>
     public interface IPresentationController : INotifyPropertyChanged
     {
@@ -20,7 +19,7 @@ namespace Fluid.Presentation.Interfaces
         ICollection<IPresentation> Presentations { get; }
 
         /// <summary>
-        /// Initializes presentation controller.
+        ///     Initializes presentation controller.
         /// </summary>
         void Initialize();
     }
