@@ -18,6 +18,8 @@ namespace Fluid.Presentation.Base
         public virtual void Initialize()
         {
             View.DataContext = DataContext;
+
+            DataContext.Initialize();
         }
     }
 }
