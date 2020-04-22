@@ -9,6 +9,11 @@ namespace Fluid.Presentation.Interfaces
     public interface IPresentationViewModel : IObservableObject
     {
         /// <summary>
+        ///     Gets whether presentation view model is initialized.
+        /// </summary>
+        bool IsInitialized { get; }
+
+        /// <summary>
         ///     Initializes presentation view model.
         /// </summary>
         void Initialize();

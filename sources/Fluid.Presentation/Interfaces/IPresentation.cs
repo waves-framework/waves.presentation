@@ -10,6 +10,11 @@ namespace Fluid.Presentation.Interfaces
     public interface IPresentation : INotifyPropertyChanged, IDisposable
     {
         /// <summary>
+        ///     Gets whether presentation is initialized.
+        /// </summary>
+        bool IsInitialized { get; }
+
+        /// <summary>
         ///     Event for message received handling.
         /// </summary>
         event EventHandler<IMessage> MessageReceived;
