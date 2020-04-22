@@ -11,6 +11,9 @@ namespace Fluid.Presentation.Base
     public abstract class Presentation : ObservableObject, IPresentation
     {
         /// <inheritdoc />
+        public virtual bool IsInitialized { get; private set; }
+
+        /// <inheritdoc />
         public event EventHandler<IMessage> MessageReceived;
 
         /// <inheritdoc />
@@ -28,6 +31,8 @@ namespace Fluid.Presentation.Base
             View.MessageReceived += View_MessageReceived;
 
             DataContext.Initialize();
+
+            IsInitialized = true;
         }
 
         /// <summary>

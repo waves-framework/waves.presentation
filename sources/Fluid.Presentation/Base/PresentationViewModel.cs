@@ -10,6 +10,11 @@ namespace Fluid.Presentation.Base
     /// </summary>
     public abstract class PresentationViewModel : ObservableObject, IPresentationViewModel
     {
+        /// <summary>
+        /// Gets whether view model is initialized.
+        /// </summary>
+        public virtual bool IsInitialized { get; private set; }
+
         /// <inheritdoc />
         public abstract void Initialize();
 
