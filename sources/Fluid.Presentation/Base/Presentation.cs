@@ -65,7 +65,7 @@ namespace Fluid.Presentation.Base
         }
 
         /// <inheritdoc />
-        public void Dispose()
+        public virtual void Dispose()
         {
             DataContext.MessageReceived -= OnDataContextMessageReceived;
             View.MessageReceived -= View_MessageReceived;
