@@ -9,13 +9,13 @@
     <projectUrl>https://ambertape.ru</projectUrl>
     <icon>files\logo.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Библиотека абстрактных классов презентации.</description>
+    <description>Library of presentation abstractions.</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2019-2020</copyright>
     <tags>Waves core presentation</tags>
     <dependencies>
       <group targetFramework=".NETCoreApp3.1">
-        <dependency id="Waves.Core.Base" version="[2020.1.1,2020.2]" />
+        <dependency id="Waves.Core.Base" version="[2020.1.151,2020.2]" />
         <dependency id="Fody" version="6.1.1" />
         <dependency id="PropertyChanged.Fody" version="3.2.7" />
       </group>
