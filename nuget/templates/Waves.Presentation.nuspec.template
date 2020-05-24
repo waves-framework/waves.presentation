@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <package>
   <metadata>
-    <id>Fluid.Presentation</id>
+    <id>Waves.Presentation</id>
     <version>{$NUGETVERSION}</version>
-    <authors>Fluid</authors>
-    <owners>Fluid</owners>
+    <authors>Waves</authors>
+    <owners>Waves</owners>
     <licenseUrl>https://ambertape.ru</licenseUrl>
     <projectUrl>https://ambertape.ru</projectUrl>
     <icon>files\logo.png</icon>
@@ -12,10 +12,10 @@
     <description>Библиотека абстрактных классов презентации.</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2019-2020</copyright>
-    <tags>fluid core presentation</tags>
+    <tags>Waves core presentation</tags>
     <dependencies>
       <group targetFramework=".NETCoreApp3.1">
-        <dependency id="Fluid.Core.Base" version="[2020.1.1,2020.2]" />
+        <dependency id="Waves.Core.Base" version="[2020.1.1,2020.2]" />
         <dependency id="Fody" version="6.1.1" />
         <dependency id="PropertyChanged.Fody" version="3.2.7" />
       </group>
@@ -28,11 +28,11 @@
   </metadata>
   <files>
   	<file src="..\..\files\logo.png" target="files\" />
-    <file src="..\..\bin\AnyCPU\release\netcoreapp3.1\Fluid.Presentation.dll" target="lib\netcoreapp3.1"/>
-    <file src="..\..\bin\AnyCPU\release\netcoreapp3.1\Fluid.Presentation.xml" target="lib\netcoreapp3.1"/>
-    <file src="..\..\bin\x86\release\netcoreapp3.1\Fluid.Presentation.dll" target="build\x86"/>
-    <file src="..\..\bin\x86\release\netcoreapp3.1\Fluid.Presentation.xml" target="build\x86"/>
-    <file src="..\..\bin\x64\release\netcoreapp3.1\Fluid.Presentation.dll" target="build\x64"/>
-    <file src="..\..\bin\x64\release\netcoreapp3.1\Fluid.Presentation.xml" target="build\x64"/>
+    <file src="..\..\bin\AnyCPU\release\netcoreapp3.1\Waves.Presentation.dll" target="lib\netcoreapp3.1"/>
+    <file src="..\..\bin\AnyCPU\release\netcoreapp3.1\Waves.Presentation.xml" target="lib\netcoreapp3.1"/>
+    <file src="..\..\bin\x86\release\netcoreapp3.1\Waves.Presentation.dll" target="build\x86"/>
+    <file src="..\..\bin\x86\release\netcoreapp3.1\Waves.Presentation.xml" target="build\x86"/>
+    <file src="..\..\bin\x64\release\netcoreapp3.1\Waves.Presentation.dll" target="build\x64"/>
+    <file src="..\..\bin\x64\release\netcoreapp3.1\Waves.Presentation.xml" target="build\x64"/>
   </files>    
 </package>

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <Import Project="../../props/Waves.Presentation.props" />
+
+  <ItemGroup>
+    <ProjectReference Include="..\Waves.Presentation.Devices\Waves.Presentation.Devices.csproj" />
+    <ProjectReference Include="..\Waves.Presentation\Waves.Presentation.csproj" />
+  </ItemGroup>
+
+</Project>

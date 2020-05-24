@@ -1,14 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="../../props/Fluid.Presentation.props" />
+  <Import Project="../../props/Waves.Presentation.props" />
 
   <ItemGroup>
-    <PackageReference Include="Fluid.Core.Base" Version="2020.1.86" />
     <PackageReference Include="Fody" Version="6.1.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="PropertyChanged.Fody" Version="3.2.7" />
+    <PackageReference Include="Waves.Core.Devices" Version="2020.1.151" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Waves.Presentation\Waves.Presentation.csproj" />
   </ItemGroup>
 
 </Project>
