@@ -9,7 +9,7 @@
     <projectUrl>https://ambertape.ru</projectUrl>
     <icon>files\logo.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Библиотека классов презентации устройств.</description>
+    <description>Library of presentation classes for devices.</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2019-2020</copyright>
     <tags>Waves core presentation devices</tags>
