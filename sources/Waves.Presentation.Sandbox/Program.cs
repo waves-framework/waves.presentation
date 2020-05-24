@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Fluid.Presentation.Sandbox
+namespace Waves.Presentation.Sandbox
 {
     internal class Program
     {

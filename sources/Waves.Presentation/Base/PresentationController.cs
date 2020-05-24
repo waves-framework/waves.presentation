@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Fluid.Core.Base;
-using Fluid.Core.Base.Interfaces;
-using Fluid.Presentation.Interfaces;
+using Waves.Core.Base;
+using Waves.Core.Base.Interfaces;
+using Waves.Presentation.Interfaces;
 
-namespace Fluid.Presentation.Base
+namespace Waves.Presentation.Base
 {
     /// <summary>
     ///     Abstract presentation controller base class.
