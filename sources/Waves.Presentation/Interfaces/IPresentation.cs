@@ -1,8 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
-using Fluid.Core.Base.Interfaces;
+using Waves.Core.Base.Interfaces;
 
-namespace Fluid.Presentation.Interfaces
+namespace Waves.Presentation.Interfaces
 {
     /// <summary>
     ///     Interface for presentations.

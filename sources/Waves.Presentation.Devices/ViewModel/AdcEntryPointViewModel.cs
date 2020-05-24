@@ -1,7 +1,7 @@
-﻿using Fluid.Core.Devices.Interfaces.Input.ADC;
-using Fluid.Presentation.Base;
+﻿using Waves.Core.Devices.Interfaces.Input.ADC;
+using Waves.Presentation.Base;
 
-namespace Fluid.Presentation.Devices.ViewModel
+namespace Waves.Presentation.Devices.ViewModel
 {
     /// <summary>
     ///     View model for ADC entry point.

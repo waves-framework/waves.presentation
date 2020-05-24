@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluid.Presentation", "..\sources\Fluid.Presentation\Fluid.Presentation.csproj", "{7AB70E1F-A603-4C15-BC34-AF444DC40636}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Waves.Presentation", "..\sources\Waves.Presentation\Waves.Presentation.csproj", "{7AB70E1F-A603-4C15-BC34-AF444DC40636}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluid.Presentation.Devices", "..\sources\Fluid.Presentation.Devices\Fluid.Presentation.Devices.csproj", "{F2AC5618-A97A-4B60-BA04-E154D14D481E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Waves.Presentation.Devices", "..\sources\Waves.Presentation.Devices\Waves.Presentation.Devices.csproj", "{F2AC5618-A97A-4B60-BA04-E154D14D481E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluid.Presentation.Sandbox", "..\sources\Fluid.Presentation.Sandbox\Fluid.Presentation.Sandbox.csproj", "{589005D6-0863-4EBD-A45E-BE390392829A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Waves.Presentation.Sandbox", "..\sources\Waves.Presentation.Sandbox\Waves.Presentation.Sandbox.csproj", "{589005D6-0863-4EBD-A45E-BE390392829A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
