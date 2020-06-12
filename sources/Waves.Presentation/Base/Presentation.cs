@@ -17,22 +17,51 @@ namespace Waves.Presentation.Base
         public event EventHandler<IMessage> MessageReceived;
 
         /// <inheritdoc />
-        public abstract IPresentationViewModel DataContext { get; }
+        public abstract IPresentationViewModel DataContext { get; protected set; }
 
         /// <inheritdoc />
-        public abstract IPresentationView View { get; }
+        public abstract IPresentationView View { get; protected set; }
 
         /// <inheritdoc />
         public virtual void Initialize()
         {
-            View.DataContext = DataContext;
+            if (DataContext != null && View != null)
+            {
+                DataContext.MessageReceived += OnDataContextMessageReceived;
 
-            DataContext.MessageReceived += OnDataContextMessageReceived;
-            View.MessageReceived += View_MessageReceived;
+                if (View != null)
+                    View.MessageReceived += View_MessageReceived;
 
-            DataContext.Initialize();
+                View.DataContext = DataContext;
 
-            IsInitialized = true;
+                DataContext.Initialize();
+
+                IsInitialized = true;
+            }
+            else
+            {
+                IsInitialized = false;
+            }
+        }
+
+        /// <inheritdoc />
+        public void SetView(IPresentationView view)
+        {
+            UnsubscribeEvents();
+
+            View = view;
+
+            Initialize();
+        }
+
+        /// <inheritdoc />
+        public void SetDataContext(IPresentationViewModel viewModel)
+        {
+            UnsubscribeEvents();
+
+            DataContext = viewModel;
+
+            Initialize();
         }
 
         /// <summary>
@@ -66,6 +95,11 @@ namespace Waves.Presentation.Base
 
         /// <inheritdoc />
         public virtual void Dispose()
+        {
+            UnsubscribeEvents();
+        }
+
+        private void UnsubscribeEvents()
         {
             DataContext.MessageReceived -= OnDataContextMessageReceived;
             View.MessageReceived -= View_MessageReceived;
