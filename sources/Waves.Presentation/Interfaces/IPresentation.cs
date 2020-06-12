@@ -33,5 +33,17 @@ namespace Waves.Presentation.Interfaces
         ///     Initializes presentation.
         /// </summary>
         void Initialize();
+
+        /// <summary>
+        /// Sets presentation view.
+        /// </summary>
+        /// <param name="view">View.</param>
+        void SetView(IPresentationView view);
+
+        /// <summary>
+        /// Sets data context.
+        /// </summary>
+        /// <param name="viewModel">View model.</param>
+        void SetDataContext(IPresentationViewModel viewModel);
     }
 }
