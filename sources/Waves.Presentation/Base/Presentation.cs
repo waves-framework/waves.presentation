@@ -37,34 +37,50 @@ namespace Waves.Presentation.Base
                 View.DataContext = DataContext;
             }
 
-            if (DataContext != null && View != null)
-            {
-                IsInitialized = DataContext.IsInitialized;
-            }
-            else
-            {
-                IsInitialized = false;
-            }
+            IsInitialized = CheckInitialization();
         }
 
         /// <inheritdoc />
         public void SetView(IPresentationView view)
         {
-            UnsubscribeEvents();
+            if (View != null)
+            {
+                View.MessageReceived -= OnViewMessageReceived;
+            }
 
             View = view;
 
-            Initialize();
+            if (View != null)
+            {
+                View.MessageReceived += OnViewMessageReceived;
+                View.DataContext = DataContext;
+            }
+
+            IsInitialized = CheckInitialization();
         }
 
         /// <inheritdoc />
         public void SetDataContext(IPresentationViewModel viewModel)
         {
-            UnsubscribeEvents();
+            if (DataContext != null)
+            {
+                DataContext.MessageReceived -= OnDataContextMessageReceived;
+            }
 
             DataContext = viewModel;
 
-            Initialize();
+            if (DataContext != null)
+            {
+                DataContext.MessageReceived += OnDataContextMessageReceived;
+                DataContext.Initialize();
+
+                if (View != null)
+                {
+                    View.DataContext = DataContext;
+                }
+            }
+
+            IsInitialized = CheckInitialization();
         }
 
         /// <summary>
@@ -102,13 +118,30 @@ namespace Waves.Presentation.Base
             UnsubscribeEvents();
         }
 
+        /// <summary>
+        /// Unsubscribes from events.
+        /// </summary>
         private void UnsubscribeEvents()
         {
             if (DataContext != null)
                 DataContext.MessageReceived -= OnDataContextMessageReceived;
 
-            if (View != null)
+            if (View != null) 
                 View.MessageReceived -= OnViewMessageReceived;
+        }
+
+        /// <summary>
+        /// Checks presentation initialization status.
+        /// </summary>
+        /// <returns>Presentation initialization status.</returns>
+        private bool CheckInitialization()
+        {
+            if (DataContext != null && View != null)
+            {
+                return DataContext.IsInitialized;
+            }
+
+            return false;
         }
     }
 }
