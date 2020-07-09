@@ -25,18 +25,21 @@ namespace Waves.Presentation.Base
         /// <inheritdoc />
         public virtual void Initialize()
         {
-            if (DataContext != null && View != null)
+            if (DataContext != null)
             {
                 DataContext.MessageReceived += OnDataContextMessageReceived;
-
-                if (View != null)
-                    View.MessageReceived += View_MessageReceived;
-
-                View.DataContext = DataContext;
-
                 DataContext.Initialize();
+            }
 
-                IsInitialized = true;
+            if (View != null)
+            {
+                View.MessageReceived += OnViewMessageReceived;
+                View.DataContext = DataContext;
+            }
+
+            if (DataContext != null && View != null)
+            {
+                IsInitialized = DataContext.IsInitialized;
             }
             else
             {
@@ -88,7 +91,7 @@ namespace Waves.Presentation.Base
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void View_MessageReceived(object sender, IMessage e)
+        private void OnViewMessageReceived(object sender, IMessage e)
         {
             OnMessageReceived(e);
         }
@@ -101,8 +104,11 @@ namespace Waves.Presentation.Base
 
         private void UnsubscribeEvents()
         {
-            DataContext.MessageReceived -= OnDataContextMessageReceived;
-            View.MessageReceived -= View_MessageReceived;
+            if (DataContext != null)
+                DataContext.MessageReceived -= OnDataContextMessageReceived;
+
+            if (View != null)
+                View.MessageReceived -= OnViewMessageReceived;
         }
     }
 }
