@@ -15,8 +15,8 @@
     <tags>Waves core presentation devices</tags>
     <dependencies>
       <group targetFramework=".NETCoreApp3.1">
-        <dependency id="Waves.Presentation" version="[{$NUGETVERSION},2020.2.2.0]" />
-        <dependency id="Waves.Core.Devices" version="[2020.2.1.167,2020.2.2.0]" />
+        <dependency id="Waves.Presentation" version="[{$NUGETVERSION},2020.2.2.0)" />
+        <dependency id="Waves.Core.Devices" version="[2020.2.1.167,2020.2.2.0)" />
       </group>
     </dependencies>
     <frameworkReferences>
