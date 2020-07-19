@@ -8,7 +8,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="PropertyChanged.Fody" Version="3.2.8" />
-    <PackageReference Include="Waves.Core.Devices" Version="2020.2.1.167" />
+    <PackageReference Include="Waves.Core.Devices" Version="2020.2.1.171" />
   </ItemGroup>
 
   <ItemGroup>
