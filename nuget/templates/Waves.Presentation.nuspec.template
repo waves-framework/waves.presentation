@@ -18,7 +18,7 @@
     <tags>Waves presentation</tags>
     <dependencies>
       <group targetFramework=".NETCoreApp3.1">
-        <dependency id="Waves.Core.Base" version="[2020.2.1.187,2020.2.2.0)" />
+        <dependency id="Waves.Core.Base" version="[2020.2.1.189,2020.2.2.0)" />
         <dependency id="Fody" version="6.2.1" />
         <dependency id="PropertyChanged.Fody" version="3.2.8" />
       </group>
