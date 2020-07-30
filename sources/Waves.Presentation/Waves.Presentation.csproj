@@ -3,7 +3,7 @@
   <Import Project="../../props/Waves.Presentation.props" />
 
   <ItemGroup>
-    <PackageReference Include="Waves.Core.Base" Version="2020.2.1.187" />
+    <PackageReference Include="Waves.Core.Base" Version="2020.2.1.189" />
     <PackageReference Include="Fody" Version="6.2.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
