@@ -11,10 +11,10 @@ namespace Waves.Presentation.Base
     public abstract class Presentation : ObservableObject, IPresentation
     {
         /// <inheritdoc />
-        public virtual bool IsInitialized { get; private set; }
+        public event EventHandler<IMessage> MessageReceived;
 
         /// <inheritdoc />
-        public event EventHandler<IMessage> MessageReceived;
+        public virtual bool IsInitialized { get; private set; }
 
         /// <inheritdoc />
         public abstract IPresentationViewModel DataContext { get; protected set; }

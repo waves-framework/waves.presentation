@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
 using Waves.Core.Base;
 using Waves.Core.Base.Interfaces;
 using Waves.Presentation.Interfaces;
@@ -12,35 +14,27 @@ namespace Waves.Presentation.Base
     /// </summary>
     public abstract class PresentationController : ObservableObject, IPresentationController
     {
-        private ICollection<IPresentation> _presentations =
-            new ObservableCollection<IPresentation>();
-
         private IPresentation _selectedPresentation;
 
+        private ICollection<IPresentation> _presentations = new ObservableCollection<IPresentation>();
+
         /// <inheritdoc />
+        public event EventHandler<IMessage> MessageReceived;
+
+        /// <inheritdoc />
+        [Reactive]
         public virtual IPresentation SelectedPresentation
         {
             get => _selectedPresentation;
-            set
-            {
-                if (Equals(value, _selectedPresentation)) return;
-
-                _selectedPresentation = value;
-                OnPropertyChanged();
-            }
+            set => this.RaiseAndSetIfChanged(ref _selectedPresentation, value);
         }
 
         /// <inheritdoc />
+        [Reactive]
         public ICollection<IPresentation> Presentations
         {
             get => _presentations;
-            private set
-            {
-                if (Equals(value, _presentations)) return;
-
-                _presentations = value;
-                OnPropertyChanged();
-            }
+            protected set => this.RaiseAndSetIfChanged(ref _presentations, value);
         }
 
         /// <inheritdoc />
@@ -65,9 +59,6 @@ namespace Waves.Presentation.Base
 
             Presentations.Remove(presentation);
         }
-
-        /// <inheritdoc />
-        public event EventHandler<IMessage> MessageReceived;
 
         /// <summary>
         /// Notifies when message received.

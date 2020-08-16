@@ -9,13 +9,13 @@ namespace Waves.Presentation.Interfaces
     public interface IPresentationView
     {
         /// <summary>
-        ///     View model context.
-        /// </summary>
-        object DataContext { get; set; }
-
-        /// <summary>
         ///     Event for message received handling.
         /// </summary>
         event EventHandler<IMessage> MessageReceived;
+
+        /// <summary>
+        ///     View model context.
+        /// </summary>
+        object DataContext { get; set; }
     }
 }
