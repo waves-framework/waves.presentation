@@ -9,6 +9,11 @@ namespace Waves.Presentation.Interfaces
     public interface IPresentationViewModel : IObservableObject
     {
         /// <summary>
+        ///     Event for message received handling.
+        /// </summary>
+        event EventHandler<IMessage> MessageReceived;
+
+        /// <summary>
         ///     Gets whether presentation view model is initialized.
         /// </summary>
         bool IsInitialized { get; }
@@ -17,10 +22,5 @@ namespace Waves.Presentation.Interfaces
         ///     Initializes presentation view model.
         /// </summary>
         void Initialize();
-
-        /// <summary>
-        ///     Event for message received handling.
-        /// </summary>
-        event EventHandler<IMessage> MessageReceived;
     }
 }
