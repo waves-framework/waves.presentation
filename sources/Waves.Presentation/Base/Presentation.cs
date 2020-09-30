@@ -1,4 +1,5 @@
 ﻿using System;
+using ReactiveUI.Fody.Helpers;
 using Waves.Core.Base;
 using Waves.Core.Base.Interfaces;
 using Waves.Presentation.Interfaces;
@@ -14,6 +15,7 @@ namespace Waves.Presentation.Base
         public event EventHandler<IMessage> MessageReceived;
 
         /// <inheritdoc />
+        [Reactive]
         public virtual bool IsInitialized { get; private set; }
 
         /// <inheritdoc />
