@@ -10,54 +10,54 @@ using Waves.Presentation.Interfaces;
 namespace Waves.Presentation.Base
 {
     /// <summary>
-    ///     Abstract presentation controller base class.
+    ///     Abstract presenter controller base class.
     /// </summary>
-    public abstract class PresentationController : ObservableObject, IPresentationController
+    public abstract class PresenterController : ObservableObject, IPresenterController
     {
-        private IPresentation _selectedPresentation;
+        private IPresenter _selectedPresenter;
 
-        private ICollection<IPresentation> _presentations = new ObservableCollection<IPresentation>();
+        private ICollection<IPresenter> _presenters = new ObservableCollection<IPresenter>();
 
         /// <inheritdoc />
         public event EventHandler<IMessage> MessageReceived;
 
         /// <inheritdoc />
         [Reactive]
-        public virtual IPresentation SelectedPresentation
+        public virtual IPresenter SelectedPresenter
         {
-            get => _selectedPresentation;
-            set => this.RaiseAndSetIfChanged(ref _selectedPresentation, value);
+            get => _selectedPresenter;
+            set => this.RaiseAndSetIfChanged(ref _selectedPresenter, value);
         }
 
         /// <inheritdoc />
         [Reactive]
-        public ICollection<IPresentation> Presentations
+        public ICollection<IPresenter> Presenters
         {
-            get => _presentations;
-            protected set => this.RaiseAndSetIfChanged(ref _presentations, value);
+            get => _presenters;
+            protected set => this.RaiseAndSetIfChanged(ref _presenters, value);
         }
 
         /// <inheritdoc />
         public abstract void Initialize();
 
         /// <inheritdoc />
-        public void RegisterPresentation(IPresentation presentation)
+        public void RegisterPresenter(IPresenter presenter)
         {
-            presentation.MessageReceived += OnPresentationMessageReceived;
+            presenter.MessageReceived += OnPresentationMessageReceived;
 
-            presentation.Initialize();
+            presenter.Initialize();
 
-            Presentations.Add(presentation);
+            Presenters.Add(presenter);
         }
 
         /// <inheritdoc />
-        public void UnregisterPresentation(IPresentation presentation)
+        public void UnregisterPresenter(IPresenter presenter)
         {
-            presentation.Dispose();
+            presenter.Dispose();
 
-            presentation.MessageReceived -= OnPresentationMessageReceived;
+            presenter.MessageReceived -= OnPresentationMessageReceived;
 
-            Presentations.Remove(presentation);
+            Presenters.Remove(presenter);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Waves.Presentation.Base
         }
 
         /// <summary>
-        /// Actions when message received from presentation.
+        /// Actions when message received from presenter.
         /// </summary>
         /// <param name="sender">Sender.</param>
         /// <param name="e">Arguments.</param>

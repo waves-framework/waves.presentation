@@ -1,4 +1,5 @@
 ﻿using System;
+using ReactiveUI.Fody.Helpers;
 using Waves.Core.Base;
 using Waves.Core.Base.Interfaces;
 using Waves.Presentation.Interfaces;
@@ -6,21 +7,22 @@ using Waves.Presentation.Interfaces;
 namespace Waves.Presentation.Base
 {
     /// <summary>
-    /// Abstract presentation base class.
+    /// Abstract presenter base class.
     /// </summary>
-    public abstract class Presentation : ObservableObject, IPresentation
+    public abstract class Presenter : ObservableObject, IPresenter
     {
         /// <inheritdoc />
         public event EventHandler<IMessage> MessageReceived;
 
         /// <inheritdoc />
+        [Reactive]
         public virtual bool IsInitialized { get; private set; }
 
         /// <inheritdoc />
-        public abstract IPresentationViewModel DataContext { get; protected set; }
+        public abstract IPresenterViewModel DataContext { get; protected set; }
 
         /// <inheritdoc />
-        public abstract IPresentationView View { get; protected set; }
+        public abstract IPresenterView View { get; protected set; }
 
         /// <inheritdoc />
         public virtual void Initialize()
@@ -41,7 +43,7 @@ namespace Waves.Presentation.Base
         }
 
         /// <inheritdoc />
-        public void SetView(IPresentationView view)
+        public void SetView(IPresenterView view)
         {
             if (View != null)
             {
@@ -60,7 +62,7 @@ namespace Waves.Presentation.Base
         }
 
         /// <inheritdoc />
-        public void SetDataContext(IPresentationViewModel viewModel)
+        public void SetDataContext(IPresenterViewModel viewModel)
         {
             if (DataContext != null)
             {
@@ -95,8 +97,8 @@ namespace Waves.Presentation.Base
         /// <summary>
         /// Actions when message received from data context.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Message.</param>
         private void OnDataContextMessageReceived(object sender, IMessage e)
         {
             OnMessageReceived(e);
@@ -105,8 +107,8 @@ namespace Waves.Presentation.Base
         /// <summary>
         /// Actions when message received from view.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender.</param>
+        /// <param name="e">Message.</param>
         private void OnViewMessageReceived(object sender, IMessage e)
         {
             OnMessageReceived(e);
