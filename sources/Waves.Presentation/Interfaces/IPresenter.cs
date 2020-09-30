@@ -5,9 +5,9 @@ using Waves.Core.Base.Interfaces;
 namespace Waves.Presentation.Interfaces
 {
     /// <summary>
-    ///     Interface for presentations.
+    ///     Interface for presenters.
     /// </summary>
-    public interface IPresentation : INotifyPropertyChanged, IDisposable
+    public interface IPresenter : INotifyPropertyChanged, IDisposable
     {
         /// <summary>
         ///     Event for message received handling.
@@ -15,35 +15,35 @@ namespace Waves.Presentation.Interfaces
         event EventHandler<IMessage> MessageReceived;
 
         /// <summary>
-        ///     Gets whether presentation is initialized.
+        ///     Gets whether presenter is initialized.
         /// </summary>
         bool IsInitialized { get; }
 
         /// <summary>
         ///     Gets view model context.
         /// </summary>
-        IPresentationViewModel DataContext { get; }
+        IPresenterViewModel DataContext { get; }
 
         /// <summary>
         ///     Gets view.
         /// </summary>
-        IPresentationView View { get; }
+        IPresenterView View { get; }
 
         /// <summary>
-        ///     Initializes presentation.
+        ///     Initializes presenter.
         /// </summary>
         void Initialize();
 
         /// <summary>
-        /// Sets presentation view.
+        /// Sets presenter view.
         /// </summary>
         /// <param name="view">View.</param>
-        void SetView(IPresentationView view);
+        void SetView(IPresenterView view);
 
         /// <summary>
         /// Sets data context.
         /// </summary>
         /// <param name="viewModel">View model.</param>
-        void SetDataContext(IPresentationViewModel viewModel);
+        void SetDataContext(IPresenterViewModel viewModel);
     }
 }

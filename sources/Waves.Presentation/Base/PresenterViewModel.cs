@@ -7,9 +7,9 @@ using Waves.Presentation.Interfaces;
 namespace Waves.Presentation.Base
 {
     /// <summary>
-    ///     Abstract presentation view model base class.
+    ///     Abstract presenter view model base class.
     /// </summary>
-    public abstract class PresentationViewModel : ObservableObject, IPresentationViewModel
+    public abstract class PresenterViewModel : ObservableObject, IPresenterViewModel
     {
         /// <inheritdoc />
         public event EventHandler<IMessage> MessageReceived;
