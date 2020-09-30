@@ -4,9 +4,9 @@ using Waves.Core.Base.Interfaces;
 namespace Waves.Presentation.Interfaces
 {
     /// <summary>
-    ///     Interface for presentation views.
+    ///     Interface for presenter view models.
     /// </summary>
-    public interface IPresentationView
+    public interface IPresenterViewModel : IObservableObject
     {
         /// <summary>
         ///     Event for message received handling.
@@ -14,8 +14,13 @@ namespace Waves.Presentation.Interfaces
         event EventHandler<IMessage> MessageReceived;
 
         /// <summary>
-        ///     View model context.
+        ///     Gets whether presenter view model is initialized.
         /// </summary>
-        object DataContext { get; set; }
+        bool IsInitialized { get; }
+
+        /// <summary>
+        ///     Initializes presenter view model.
+        /// </summary>
+        void Initialize();
     }
 }
