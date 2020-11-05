@@ -9,6 +9,16 @@ namespace Waves.Presentation.Interfaces
     public interface IPresenterView
     {
         /// <summary>
+        /// Gets Id.
+        /// </summary>
+        Guid Id { get; }
+        
+        /// <summary>
+        /// Gets name.
+        /// </summary>
+        string Name { get; }
+        
+        /// <summary>
         ///     Event for message received handling.
         /// </summary>
         event EventHandler<IMessage> MessageReceived;

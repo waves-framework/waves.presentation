@@ -7,13 +7,8 @@ namespace Waves.Presentation.Interfaces
     /// <summary>
     ///     Interface for presenters.
     /// </summary>
-    public interface IPresenter : INotifyPropertyChanged, IDisposable
+    public interface IPresenter : IObject
     {
-        /// <summary>
-        ///     Event for message received handling.
-        /// </summary>
-        event EventHandler<IMessage> MessageReceived;
-
         /// <summary>
         ///     Gets whether presenter is initialized.
         /// </summary>

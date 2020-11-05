@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using Waves.Core.Base;
+using Waves.Core.Base.Enums;
 using Waves.Core.Base.Interfaces;
 using Waves.Presentation.Interfaces;
 
@@ -12,14 +13,11 @@ namespace Waves.Presentation.Base
     /// <summary>
     ///     Abstract presenter controller base class.
     /// </summary>
-    public abstract class PresenterController : ObservableObject, IPresenterController
+    public abstract class PresenterController : Waves.Core.Base.Object, IPresenterController
     {
         private IPresenter _selectedPresenter;
 
         private ICollection<IPresenter> _presenters = new ObservableCollection<IPresenter>();
-
-        /// <inheritdoc />
-        public event EventHandler<IMessage> MessageReceived;
 
         /// <inheritdoc />
         [Reactive]
@@ -43,30 +41,66 @@ namespace Waves.Presentation.Base
         /// <inheritdoc />
         public void RegisterPresenter(IPresenter presenter)
         {
-            presenter.MessageReceived += OnPresentationMessageReceived;
+            try
+            {
+                presenter.MessageReceived += OnPresentationMessageReceived;
 
-            presenter.Initialize();
+                presenter.Initialize();
 
-            Presenters.Add(presenter);
+                Presenters.Add(presenter);
+                
+                OnMessageReceived(
+                    this,
+                    new Message(
+                        $"Registering presenter",
+                        $"Presenter {presenter.Name} ({presenter.Id}) was registered with the controller {Name} ({Id})",
+                        Name,
+                        MessageType.Information));
+            }
+            catch (Exception e)
+            {
+                OnMessageReceived(
+                    this,
+                    new Message(
+                        "Registering presenter",
+                        $"Error occured while registering {presenter.Name} ({presenter.Id})",
+                        Name,
+                        e,
+                        false));
+            }
         }
 
         /// <inheritdoc />
         public void UnregisterPresenter(IPresenter presenter)
         {
-            presenter.Dispose();
+            try
+            {
+                presenter.Dispose();
 
-            presenter.MessageReceived -= OnPresentationMessageReceived;
+                presenter.MessageReceived -= OnPresentationMessageReceived;
 
-            Presenters.Remove(presenter);
-        }
-
-        /// <summary>
-        /// Notifies when message received.
-        /// </summary>
-        /// <param name="e">Message.</param>
-        protected virtual void OnMessageReceived(IMessage e)
-        {
-            MessageReceived?.Invoke(this, e);
+                Presenters.Remove(presenter);
+                
+                OnMessageReceived(
+                    this,
+                    new Message(
+                        $"Unregistering presenter",
+                        $"Presenter {presenter.Name} ({presenter.Id}) was unregistered from the controller {Name} ({Id})",
+                        Name,
+                        MessageType.Information));
+            }
+            catch (Exception e)
+            {
+                OnMessageReceived(
+                    this,
+                    new Message(
+                        $"Unregistering presenter",
+                        $"Error occured while unregistering {presenter.Name} ({presenter.Id})",
+                        Name,
+                        e,
+                        false));
+            }
+            
         }
 
         /// <summary>
@@ -76,7 +110,7 @@ namespace Waves.Presentation.Base
         /// <param name="e">Arguments.</param>
         private void OnPresentationMessageReceived(object sender, IMessage e)
         {
-            OnMessageReceived(e);
+            OnMessageReceived(sender,e);
         }
     }
 }
