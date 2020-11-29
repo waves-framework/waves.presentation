@@ -9,8 +9,20 @@ namespace Waves.Presentation.Base
     /// <summary>
     ///     Abstract presenter view model base class.
     /// </summary>
-    public abstract class PresenterViewModel : Waves.Core.Base.Object, IPresenterViewModel
+    public abstract class PresenterViewModel : Waves.Core.Base.WavesObject, IPresenterViewModel
     {
+        /// <summary>
+        /// Creates new instance of <see cref="PresenterViewModel"/>.
+        /// </summary>
+        /// <param name="core">Instance of core.</param>
+        protected PresenterViewModel(IWavesCore core)
+        {
+            Core = core;
+        }
+        
+        /// <inheritdoc />
+        public IWavesCore Core { get; }
+        
         /// <summary>
         /// Gets whether view model is initialized.
         /// </summary>

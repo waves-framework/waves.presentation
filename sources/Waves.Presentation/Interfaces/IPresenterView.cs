@@ -9,23 +9,34 @@ namespace Waves.Presentation.Interfaces
     public interface IPresenterView
     {
         /// <summary>
+        ///     Event for message received handling.
+        /// </summary>
+        event EventHandler<IWavesMessage> MessageReceived;
+        
+        /// <summary>
+        /// Get instance of core.
+        /// </summary>
+        IWavesCore Core { get; }
+        
+        /// <summary>
         /// Gets Id.
         /// </summary>
         Guid Id { get; }
         
         /// <summary>
-        /// Gets name.
+        /// Gets view name.
         /// </summary>
         string Name { get; }
-        
-        /// <summary>
-        ///     Event for message received handling.
-        /// </summary>
-        event EventHandler<IMessage> MessageReceived;
 
         /// <summary>
         ///     View model context.
         /// </summary>
         object DataContext { get; set; }
+
+        /// <summary>
+        /// Attaches core.
+        /// </summary>
+        /// <param name="core"></param>
+        void AttachCore(IWavesCore core);
     }
 }

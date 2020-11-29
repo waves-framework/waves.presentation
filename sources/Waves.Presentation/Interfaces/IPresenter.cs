@@ -7,12 +7,17 @@ namespace Waves.Presentation.Interfaces
     /// <summary>
     ///     Interface for presenters.
     /// </summary>
-    public interface IPresenter : IObject
+    public interface IPresenter : IWavesObject
     {
         /// <summary>
         ///     Gets whether presenter is initialized.
         /// </summary>
         bool IsInitialized { get; }
+
+        /// <summary>
+        /// Get instance of core.
+        /// </summary>
+        IWavesCore Core { get; }
 
         /// <summary>
         ///     Gets view model context.

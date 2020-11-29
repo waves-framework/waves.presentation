@@ -4,15 +4,29 @@ using Waves.Core.Base;
 using Waves.Core.Base.Enums;
 using Waves.Core.Base.Interfaces;
 using Waves.Presentation.Interfaces;
-using Object = System.Object;
 
 namespace Waves.Presentation.Base
 {
     /// <summary>
-    /// Abstract presenter base class.
+    ///     Abstract presenter base class.
     /// </summary>
-    public abstract class Presenter : Waves.Core.Base.Object, IPresenter
+    public abstract class Presenter : WavesObject, IPresenter
     {
+        /// <summary>
+        ///     Creates new instance of <see cref="Presenter" />.
+        /// </summary>
+        /// <param name="core">Instance of core.</param>
+        protected Presenter(IWavesCore core)
+        {
+            Core = core
+                   ?? throw new ArgumentNullException(
+                       nameof(core),
+                       "Presenter didn't receive core instance.");
+        }
+
+        /// <inheritdoc />
+        public IWavesCore Core { get; protected set; }
+
         /// <inheritdoc />
         [Reactive]
         public virtual bool IsInitialized { get; private set; }
@@ -32,38 +46,38 @@ namespace Waves.Presentation.Base
             {
                 if (DataContext != null)
                 {
-                    DataContext.MessageReceived += OnDataContextMessageReceived;
+                    DataContext.MessageReceived += OnMessageReceived;
                     DataContext.Initialize();
                 }
 
                 if (View != null)
                 {
-                    View.MessageReceived += OnViewMessageReceived;
+                    View.MessageReceived += OnMessageReceived;
                     View.DataContext = DataContext;
+                    View.AttachCore(Core);
                 }
 
                 IsInitialized = CheckInitialization();
-                
-                OnMessageReceived(
-                    this,
-                    new Message(
-                        "Presenter initialization",
-                        $"Presenter {Name} ({Id}) was initialized.",
-                        Name,
-                        MessageType.Information));
+
+                var message = new WavesMessage(
+                    "Presenter initialization",
+                    $"Presenter {Name} ({Id}) was initialized.",
+                    Name,
+                    WavesMessageType.Information);
+
+                OnMessageReceived(this, message);
             }
             catch (Exception e)
             {
-                OnMessageReceived(
-                    this,
-                    new Message(
-                        "Presenter initialization",
-                        $"Error occured while initialization {Name} ({Id})",
-                        Name,
-                        e,
-                        false));
+                var message = new WavesMessage(
+                    "Presenter initialization",
+                    $"Error occured while initialization {Name} ({Id})",
+                    Name,
+                    e,
+                    false);
+
+                OnMessageReceived(this, message);
             }
-            
         }
 
         /// <inheritdoc />
@@ -71,39 +85,36 @@ namespace Waves.Presentation.Base
         {
             try
             {
-                if (View != null)
-                {
-                    View.MessageReceived -= OnViewMessageReceived;
-                }
+                if (View != null) View.MessageReceived -= OnMessageReceived;
 
                 View = view;
 
                 if (View != null)
                 {
-                    View.MessageReceived += OnViewMessageReceived;
+                    View.MessageReceived += OnMessageReceived;
                     View.DataContext = DataContext;
                 }
 
                 IsInitialized = CheckInitialization();
-                
-                OnMessageReceived(
-                    this,
-                    new Message(
-                        "Setting view",
-                        $"View {view.Name} ({view.Id}) was set with the presenter {Name} ({Id}) ",
-                        Name,
-                        MessageType.Information));
+
+                var message = new WavesMessage(
+                    "Setting view",
+                    $"View {view.Name} ({view.Id}) was set with the presenter {Name} ({Id}) ",
+                    Name,
+                    WavesMessageType.Information);
+
+                OnMessageReceived(this, message);
             }
             catch (Exception e)
             {
-                OnMessageReceived(
-                    this,
-                    new Message(
-                        "Setting view",
-                        $"Error occured while setting view {view.Name} ({view.Id}) on presenter {Name} ({Id})",
-                        Name,
-                        e,
-                        false));
+                var message = new WavesMessage(
+                    "Setting view",
+                    $"Error occured while setting view {view.Name} ({view.Id}) on presenter {Name} ({Id})",
+                    Name,
+                    e,
+                    false);
+
+                OnMessageReceived(this, message);
             }
         }
 
@@ -112,65 +123,39 @@ namespace Waves.Presentation.Base
         {
             try
             {
-                if (DataContext != null)
-                {
-                    DataContext.MessageReceived -= OnDataContextMessageReceived;
-                }
+                if (DataContext != null) DataContext.MessageReceived -= OnMessageReceived;
 
                 DataContext = viewModel;
 
                 if (DataContext != null)
                 {
-                    DataContext.MessageReceived += OnDataContextMessageReceived;
+                    DataContext.MessageReceived += OnMessageReceived;
                     DataContext.Initialize();
 
-                    if (View != null)
-                    {
-                        View.DataContext = DataContext;
-                    }
+                    if (View != null) View.DataContext = DataContext;
                 }
 
                 IsInitialized = CheckInitialization();
-                
-                OnMessageReceived(
-                    this,
-                    new Message(
-                        "Setting view model",
-                        $"View model {viewModel.Name} ({viewModel.Id}) was set with the presenter {Name} ({Id}) ",
-                        Name,
-                        MessageType.Information));
+
+                var message = new WavesMessage(
+                    "Setting view model",
+                    $"View model {viewModel.Name} ({viewModel.Id}) was set with the presenter {Name} ({Id}) ",
+                    Name,
+                    WavesMessageType.Information);
+
+                OnMessageReceived(this, message);
             }
             catch (Exception e)
             {
-                OnMessageReceived(
-                    this,
-                    new Message(
-                        "Setting view model",
-                        $"Error occured while setting view model {viewModel.Name} ({viewModel.Id}) on presenter {Name} ({Id})",
-                        Name,
-                        e,
-                        false));
+                var message = new WavesMessage(
+                    "Setting view model",
+                    $"Error occured while setting view model {viewModel.Name} ({viewModel.Id}) on presenter {Name} ({Id})",
+                    Name,
+                    e,
+                    false);
+
+                OnMessageReceived(this, message);
             }
-        }
-
-        /// <summary>
-        /// Actions when message received from data context.
-        /// </summary>
-        /// <param name="sender">Sender.</param>
-        /// <param name="e">Message.</param>
-        private void OnDataContextMessageReceived(object sender, IMessage e)
-        {
-            OnMessageReceived(sender, e);
-        }
-
-        /// <summary>
-        /// Actions when message received from view.
-        /// </summary>
-        /// <param name="sender">Sender.</param>
-        /// <param name="e">Message.</param>
-        private void OnViewMessageReceived(object sender, IMessage e)
-        {
-            OnMessageReceived(sender,e);
         }
 
         /// <inheritdoc />
@@ -180,27 +165,27 @@ namespace Waves.Presentation.Base
         }
 
         /// <summary>
-        /// Unsubscribes from events.
+        ///     Unsubscribes from events.
         /// </summary>
         private void UnsubscribeEvents()
         {
             if (DataContext != null)
-                DataContext.MessageReceived -= OnDataContextMessageReceived;
+                DataContext.MessageReceived -= OnMessageReceived;
 
-            if (View != null) 
-                View.MessageReceived -= OnViewMessageReceived;
+            if (View != null)
+                View.MessageReceived -= OnMessageReceived;
         }
 
         /// <summary>
-        /// Checks presentation initialization status.
+        ///     Checks presentation initialization status.
         /// </summary>
         /// <returns>Presentation initialization status.</returns>
         private bool CheckInitialization()
         {
-            if (DataContext != null && View != null)
-            {
+            if (DataContext != null
+                && View != null
+                && View.DataContext.Equals(DataContext))
                 return DataContext.IsInitialized;
-            }
 
             return false;
         }

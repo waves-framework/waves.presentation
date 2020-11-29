@@ -8,8 +8,13 @@ namespace Waves.Presentation.Interfaces
     /// <summary>
     ///     Interface for presenter controllers.
     /// </summary>
-    public interface IPresenterController : IObject
+    public interface IPresenterController : IWavesObject
     {
+        /// <summary>
+        /// Get instance of core.
+        /// </summary>
+        IWavesCore Core { get; }
+        
         /// <summary>
         ///     Gets or sets selected presenter.
         /// </summary>
