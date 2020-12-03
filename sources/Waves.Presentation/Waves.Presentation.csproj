@@ -3,7 +3,7 @@
   <Import Project="../../props/Waves.Presentation.props" />
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\core\sources\Waves.Core.Base\Waves.Core.Base.csproj" />
+    <PackageReference Include="Waves.Core.Base" Version="2021.1.1-preview1" />
   </ItemGroup>
 
 </Project>
