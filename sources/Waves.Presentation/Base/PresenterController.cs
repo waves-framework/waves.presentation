@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using Waves.Core.Base;
+using Waves.Core.Base.Enums;
 using Waves.Core.Base.Interfaces;
 using Waves.Presentation.Interfaces;
 
@@ -12,14 +13,23 @@ namespace Waves.Presentation.Base
     /// <summary>
     ///     Abstract presenter controller base class.
     /// </summary>
-    public abstract class PresenterController : ObservableObject, IPresenterController
+    public abstract class PresenterController : Waves.Core.Base.WavesObject, IPresenterController
     {
         private IPresenter _selectedPresenter;
 
         private ICollection<IPresenter> _presenters = new ObservableCollection<IPresenter>();
-
+        
+        /// <summary>
+        /// Creates new instance of <see cref="PresenterController"/>.
+        /// </summary>
+        /// <param name="core">Instance of core.</param>
+        protected PresenterController(IWavesCore core)
+        {
+            Core = core;
+        }
+        
         /// <inheritdoc />
-        public event EventHandler<IMessage> MessageReceived;
+        public IWavesCore Core { get; }
 
         /// <inheritdoc />
         [Reactive]
@@ -43,40 +53,66 @@ namespace Waves.Presentation.Base
         /// <inheritdoc />
         public void RegisterPresenter(IPresenter presenter)
         {
-            presenter.MessageReceived += OnPresentationMessageReceived;
+            try
+            {
+                presenter.MessageReceived += OnMessageReceived;
 
-            presenter.Initialize();
+                presenter.Initialize();
 
-            Presenters.Add(presenter);
+                Presenters.Add(presenter);
+
+                var message = new WavesMessage(
+                    $"Registering presenter",
+                    $"Presenter {presenter.Name} ({presenter.Id}) was registered with the controller {Name} ({Id})",
+                    Name,
+                    WavesMessageType.Information);
+
+                OnMessageReceived(this, message);
+            }
+            catch (Exception e)
+            {
+                var message = new WavesMessage(
+                    "Registering presenter",
+                    $"Error occured while registering {presenter.Name} ({presenter.Id})",
+                    Name,
+                    e,
+                    false);
+                
+                OnMessageReceived(this, message);
+            }
         }
 
         /// <inheritdoc />
         public void UnregisterPresenter(IPresenter presenter)
         {
-            presenter.Dispose();
+            try
+            {
+                presenter.Dispose();
 
-            presenter.MessageReceived -= OnPresentationMessageReceived;
+                presenter.MessageReceived -= OnMessageReceived;
 
-            Presenters.Remove(presenter);
-        }
+                Presenters.Remove(presenter);
 
-        /// <summary>
-        /// Notifies when message received.
-        /// </summary>
-        /// <param name="e">Message.</param>
-        protected virtual void OnMessageReceived(IMessage e)
-        {
-            MessageReceived?.Invoke(this, e);
-        }
-
-        /// <summary>
-        /// Actions when message received from presenter.
-        /// </summary>
-        /// <param name="sender">Sender.</param>
-        /// <param name="e">Arguments.</param>
-        private void OnPresentationMessageReceived(object sender, IMessage e)
-        {
-            OnMessageReceived(e);
+                var message = new WavesMessage(
+                    $"Unregistering presenter",
+                    $"Presenter {presenter.Name} ({presenter.Id}) was unregistered from the controller {Name} ({Id})",
+                    Name,
+                    WavesMessageType.Information);
+                
+                OnMessageReceived(this, message);
+            }
+            catch (Exception e)
+            {
+                var message = new WavesMessage(
+                    $"Unregistering presenter",
+                    $"Error occured while unregistering {presenter.Name} ({presenter.Id})",
+                    Name,
+                    e,
+                    false);
+                
+                OnMessageReceived(this, message);
+            }
+            
         }
     }
 }

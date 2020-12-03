@@ -6,13 +6,13 @@ namespace Waves.Presentation.Interfaces
     /// <summary>
     ///     Interface for presenter view models.
     /// </summary>
-    public interface IPresenterViewModel : IObservableObject
+    public interface IPresenterViewModel : IWavesObject
     {
         /// <summary>
-        ///     Event for message received handling.
+        /// Get instance of core.
         /// </summary>
-        event EventHandler<IMessage> MessageReceived;
-
+        IWavesCore Core { get; }
+        
         /// <summary>
         ///     Gets whether presenter view model is initialized.
         /// </summary>

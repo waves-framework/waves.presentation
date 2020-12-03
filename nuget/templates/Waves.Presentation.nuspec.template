@@ -11,13 +11,13 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Library of presentation abstractions.</description>
    <releaseNotes>
-      Updated Waves.Core.Base to 2020.2.2
+      - Updated Waves.Core.Base to 2021.1.1-preview1
     </releaseNotes>
     <copyright>Copyright (c) 2020 Egor Khindikaynen</copyright>
     <tags>Waves presentation</tags>
     <dependencies>
       <group targetFramework=".NETCoreApp3.1">
-        <dependency id="Waves.Core.Base" version="2020.2.5" />
+        <dependency id="Waves.Core.Base" version="2021.1.1-preview1" />
       </group>
     </dependencies>
     <frameworkReferences>
