@@ -11,11 +11,32 @@ namespace Waves.Presentation.Interfaces
         /// <summary>
         ///     Event for message received handling.
         /// </summary>
-        event EventHandler<IMessage> MessageReceived;
+        event EventHandler<IWavesMessage> MessageReceived;
+        
+        /// <summary>
+        /// Get instance of core.
+        /// </summary>
+        IWavesCore Core { get; }
+        
+        /// <summary>
+        /// Gets Id.
+        /// </summary>
+        Guid Id { get; }
+        
+        /// <summary>
+        /// Gets view name.
+        /// </summary>
+        string Name { get; }
 
         /// <summary>
         ///     View model context.
         /// </summary>
         object DataContext { get; set; }
+
+        /// <summary>
+        /// Attaches core.
+        /// </summary>
+        /// <param name="core"></param>
+        void AttachCore(IWavesCore core);
     }
 }

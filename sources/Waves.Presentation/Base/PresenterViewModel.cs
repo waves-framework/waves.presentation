@@ -9,11 +9,20 @@ namespace Waves.Presentation.Base
     /// <summary>
     ///     Abstract presenter view model base class.
     /// </summary>
-    public abstract class PresenterViewModel : ObservableObject, IPresenterViewModel
+    public abstract class PresenterViewModel : Waves.Core.Base.WavesObject, IPresenterViewModel
     {
+        /// <summary>
+        /// Creates new instance of <see cref="PresenterViewModel"/>.
+        /// </summary>
+        /// <param name="core">Instance of core.</param>
+        protected PresenterViewModel(IWavesCore core)
+        {
+            Core = core;
+        }
+        
         /// <inheritdoc />
-        public event EventHandler<IMessage> MessageReceived;
-
+        public IWavesCore Core { get; }
+        
         /// <summary>
         /// Gets whether view model is initialized.
         /// </summary>
@@ -22,14 +31,5 @@ namespace Waves.Presentation.Base
 
         /// <inheritdoc />
         public abstract void Initialize();
-
-        /// <summary>
-        /// Notifies when message received.
-        /// </summary>
-        /// <param name="e">Message.</param>
-        protected virtual void OnMessageReceived(IMessage e)
-        {
-            MessageReceived?.Invoke(this, e);
-        }
     }
 }
