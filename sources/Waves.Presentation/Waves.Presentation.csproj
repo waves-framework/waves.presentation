@@ -7,11 +7,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\core\sources\Waves.Core.Base\Waves.Core.Base.csproj" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\..\submodules\core\sources\Waves.Core.Base\Waves.Core.Base.csproj" />
   </ItemGroup>
 
 </Project>
