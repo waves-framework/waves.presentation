@@ -10,4 +10,8 @@
     <ProjectReference Include="..\..\..\core\sources\Waves.Core.Base\Waves.Core.Base.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+
 </Project>
