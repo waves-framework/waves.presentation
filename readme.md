@@ -1,4 +1,4 @@
-## ![logo](files/logo_very_small.png)  Waves Presentation
+## ![logo](files/logo_very_small.png)  Waves Presentation (deprecated)
 
 ![logo](http://teamcity.ambertape.ru/app/rest/builds/buildType:(id:WAVES_PresentationRelease)/statusIcon) ![logo](https://img.shields.io/github/license/waves-framework/waves.presentation) ![logo](https://img.shields.io/nuget/v/Waves.Presentation)
 
